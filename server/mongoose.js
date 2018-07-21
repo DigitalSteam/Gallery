@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/gallery');
 
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var gameSchema = new Schema({
+const gameSchema = new Schema({
 	name: {type: String, unique: true},
 	description: String,
 	videos: [String],
@@ -15,6 +15,6 @@ var gameSchema = new Schema({
 	tags: [String]
 });
 
-var Game = mongoose.model('Number', gameSchema);
+const Game = mongoose.model('Number', gameSchema);
 
 module.exports = Game;
