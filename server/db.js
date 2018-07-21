@@ -30,3 +30,10 @@ const searchGamesByParams = (params, callback) => {
 		callback(game);
 	});
 }
+
+module.exports = {
+	addGame,
+	fetchGameById,
+	searchGameByParams,
+	searchGamesByParams
+}
