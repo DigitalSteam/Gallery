@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import Description from './Description.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -28,17 +28,7 @@ class App extends React.Component {
                 </div>
 
               </div>
-
-              <div className='col right'>
-                <div id='game_header'>
-                  <img className="header" src="https://steamcdn-a.akamaihd.net/steam/apps/570/header.jpg?t=1525818062" />
-                </div>
-                <div id='description'>
-                  Every day, millions of players worldwide enter battle as one of over a hundred Dota heroes. And no matter if it's their 10th hour of play or 1,000th, there's always something new to discover. With regular updates that ensure a constant evolution of gameplay, features, and heroes, Dota 2 has truly taken on a life of its own.
-                </div>
-                <div id='reviews'>
-                </div>
-              </div>
+              <Description  />
             </div>
         </div>
       </div>)
