@@ -28,7 +28,7 @@ class App extends React.Component {
                         var url = "https://s3-us-west-1.amazonaws.com/steamgallery/pubg"+i+".jpg";
                         return <img className="thumbnails" key={i} src={url} />
                       })
-                    }             
+                    }
                   </div>
                 </div>
 
