@@ -18,6 +18,7 @@ class Description extends React.Component {
   }
 
   render() {
+  	var i = 0;
   	return (
   		<div className='col right'>
 	  		<div id='game_header'>
@@ -60,7 +61,7 @@ class Description extends React.Component {
 		        <p> Popular user-defined tags for this product: </p>
 		        {
 		        	this.state.tags.map((tag) => {
-		        		return <span className="box blue">{tag}</span> ;
+		        		return <span key={i++}className="box blue">{tag}</span> ;
 		        	})
 		        }
         	</div>
