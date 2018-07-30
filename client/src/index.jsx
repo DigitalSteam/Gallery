@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Description from './Description.jsx';
-// import Thumbnail from './Thumbnail.jsx';
+import Thumbnail from './Thumbnail.jsx';
 
 
 const frameWidth = 122;
@@ -11,8 +11,8 @@ class App extends React.Component {
     super(props);
     this.state = { 
       thumbnails: [1,2,3,4,5,6,7,8,9,10],
-      // videos: [1,2],
-      // images: [3,4,5,6,7,8,9,10],
+      videos: [1,2],
+      images: [3,4,5,6,7,8,9,10],
       curframe: 1,
       scrollleft: -10
     };
@@ -21,53 +21,53 @@ class App extends React.Component {
     this.selectFrame = this.selectFrame.bind(this);
     this.prevFrame = this.prevFrame.bind(this);
     this.nextFrame = this.nextFrame.bind(this);
-    // this.selectScrollLeft = this.selectScrollLeft.bind(this);
+    this.selectScrollLeft = this.selectScrollLeft.bind(this);
   }
 
-  // componentDidMount() {
-  //   setInterval(this.nextFrame, 4000);
-  // }
+  componentDidMount() {
+    setInterval(this.nextFrame, 4000);
+  }
 
   syncPosition() {
 
   }
 
-  // selectFrame(val) {
-  //   this.setState({
-  //       curframe: val
-  //   });
-  //   var curLeft = this.state.scrollleft - 10 + (val - 1) * (frameWidth + 10);
-  //   if( curLeft < 0 || curLeft > 4*(frameWidth + 10)){
-  //    this.setState({
-  //     scrollleft: -10 - (val - 1) * (frameWidth + 10)
-  //    });
-  //   }
-  // }
+  selectFrame(val) {
+    this.setState({
+        curframe: val
+    });
+    var curLeft = this.state.scrollleft - 10 + (val - 1) * (frameWidth + 10);
+    if( curLeft < 0 || curLeft > 4*(frameWidth + 10)){
+     this.setState({
+      scrollleft: -10 - (val - 1) * (frameWidth + 10)
+     });
+    }
+  }
 
-  // prevFrame() {
-  //   if(this.state.curframe === 1) {
-  //     this.selectFrame(this.state.thumbnails.length);
-  //   } else {
-  //     this.selectFrame(Number(this.state.curframe) - 1);
-  //   }
-  //   console.log(this.state.curframe);
-  // }
+  prevFrame() {
+    if(this.state.curframe === 1) {
+      this.selectFrame(this.state.thumbnails.length);
+    } else {
+      this.selectFrame(Number(this.state.curframe) - 1);
+    }
+    console.log(this.state.curframe);
+  }
 
-  // nextFrame() {
-  //   if(this.state.curframe === this.state.thumbnails.length) {
-  //     this.selectFrame(1);
-  //   } else {
-  //     this.selectFrame(Number(this.state.curframe) + 1);
-  //   }
-  // }
+  nextFrame() {
+    if(this.state.curframe === this.state.thumbnails.length) {
+      this.selectFrame(1);
+    } else {
+      this.selectFrame(Number(this.state.curframe) + 1);
+    }
+  }
 
-  // slide(e) {
+  slide(e) {
     
-  //   this.setState({
-  //     scrollleft: -10 - ( (10 + frameWidth) * (e.target.value - 1) * (this.state.thumbnails.length - 5) ) / 99 
-  //   });
+    this.setState({
+      scrollleft: -10 - ( (10 + frameWidth) * (e.target.value - 1) * (this.state.thumbnails.length - 5) ) / 99 
+    });
     
-  // }
+  }
 
   selectScrollLeft(val) {
     this.setState({
@@ -91,8 +91,7 @@ class App extends React.Component {
                     {
                       this.state.thumbnails.map( (i) => {
                         var url = "https://s3-us-west-1.amazonaws.com/steamgallery/pubg"+i+".jpg";
-                        return <img onClick={this.selectFrame} className="thumbnails" key={i} src={url} />
-                        // return <Thumbnail num={i} selectLeft={this.selectScrollLeft} left={this.state.scrollleft} selectFrame={this.selectFrame} key={i} src={url} curFrame={this.state.curframe}/>
+                        return <Thumbnail num={i} selectLeft={this.selectScrollLeft} left={this.state.scrollleft} selectFrame={this.selectFrame} key={i} src={url} curFrame={this.state.curframe}/>
                       })
                     }
                   </div>
