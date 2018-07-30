@@ -45,7 +45,7 @@ body{
 }
 
 #video{
-	height:380px;
+	height:366px;
 	width: 650px;
 }
 
@@ -72,12 +72,6 @@ body{
 
 
 
-}
-#slider{
-	margin-top: 5px;
-	height: 20px;
-	box-sizing: border-box;
-	border: 1px solid #9c38a0; 
 }
 
 #description{
@@ -141,4 +135,57 @@ p{
 	height: 74px;
 	width: 122px;
 	margin-left: 10px;
+}
+
+
+.slider {
+	position: absolute;
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    left: 118px;
+    top: 470px;
+    width: 610px; /* Full-width */
+    height: 20px; /* Specified height */
+    background: #000000;
+    outline: none; /* Remove outline */
+    opacity: 0.3; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 50px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    background: #1c2938; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    opacity: 0.7;
+}
+
+.slider::-webkit-slider-thumb:hover{
+	opacity: 1;
+	background: #809fff;
+}
+
+.slider::-moz-range-thumb {
+    width: 50px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    background: #4CAF50; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+.toggleleft{
+	position: absolute;
+	top: 467px;
+	font-size: 20px;
+	color: white;
+
+}
+.toggleright{
+	position: absolute;
+	top: 467px;
+	font-size: 20px;	
+	left:738px;
+	color: white;
+
 }

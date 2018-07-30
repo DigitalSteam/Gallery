@@ -7,7 +7,13 @@ class App extends React.Component {
     this.state = { 
       thumbnails: [1,2,3,4,5,6,7,8,9,10],
       repos: []
-    }
+    };
+    this.drag = this.drag.apply(this);
+
+  }
+
+  drag(e) {
+
   }
 
   render () {
@@ -31,10 +37,13 @@ class App extends React.Component {
                     }
                   </div>
                 </div>
-
-                <div id='slider'>
-                </div>
-
+                
+                  <span className="toggleleft"> &lt;  </span>
+                  <input type="range" min="1" max="100" className="slider" />
+                  <span className="toggleright"> &gt; </span>
+                
+                
+                
               </div>
               <Description  />
             </div>
