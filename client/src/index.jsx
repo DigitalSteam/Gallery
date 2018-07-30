@@ -32,7 +32,11 @@ class App extends React.Component {
 
   }
 
+
   selectFrame(val) {
+    if(val === 1){
+
+    }
     this.setState({
         curframe: val
     });
@@ -74,7 +78,7 @@ class App extends React.Component {
       scrollleft: val
     });
   }
-
+  
   render () {
     return (
         <div className='background'>
@@ -83,7 +87,9 @@ class App extends React.Component {
               <div className='col left'>
 
                 <div>
-                  <embed id='video' src="https://steamcdn-a.akamaihd.net/steam/apps/256720476/movie480.webm?t=1529548698" />
+                  {
+                    <embed id='video' src="https://steamcdn-a.akamaihd.net/steam/apps/256720476/movie480.webm?t=1529548698" />
+                  }
                 </div>
 
                 <div id='list'>
