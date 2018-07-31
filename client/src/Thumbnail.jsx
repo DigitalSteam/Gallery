@@ -29,7 +29,7 @@ class Thumbnail extends React.Component {
 
 	select(e) {
 		var len = e.target.src.length;
-	    this.props.selectFrame.call(null, e.target.src[len-5]);
+	    this.props.selectFrame.call(null, e.target.src.replace(/.*?(\d+)[^\d]*$/,'$1'));
 	}
 
 	
