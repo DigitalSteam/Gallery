@@ -48,7 +48,10 @@ body{
 	height:366px;
 	width: 650px;
 }
-
+#image{
+	height:366px;
+	width: 650px;
+}
 #list{
 	margin-top: 5px;
 	position: relative;
