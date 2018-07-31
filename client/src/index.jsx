@@ -2,9 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Description from './Description.jsx';
 import Thumbnail from './Thumbnail.jsx';
-
+import SliderBar from './Sliderbar.jsx';
 
 const frameWidth = 122;
+const videoUrl = {
+  1: 'https://steamcdn-a.akamaihd.net/steam/apps/256720476/movie480.webm?t=1529548698',
+  2: 'https://steamcdn-a.akamaihd.net/steam/apps/256704279/movie480.webm?t=1513851148',
+  3: 'https://s3-us-west-1.amazonaws.com/steamgallery/pubg_big_3.jpg',
+  4: 'https://s3-us-west-1.amazonaws.com/steamgallery/pubg_big_4.jpg',
+  5: 'https://s3-us-west-1.amazonaws.com/steamgallery/pubg_big_5.jpg',
+  6: 'https://s3-us-west-1.amazonaws.com/steamgallery/pubg_big_6.jpg',
+  7: 'https://s3-us-west-1.amazonaws.com/steamgallery/pubg_big_7.jpg',
+  8: 'https://s3-us-west-1.amazonaws.com/steamgallery/pubg_big_8.jpg',
+  9: 'https://s3-us-west-1.amazonaws.com/steamgallery/pubg_big_9.jpg',
+  10: 'https://s3-us-west-1.amazonaws.com/steamgallery/pubg_big_10.jpg',
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -13,48 +25,11 @@ class App extends React.Component {
       thumbnails: [1,2,3,4,5,6,7,8,9,10],
       videos: [1,2],
       images: [3,4,5,6,7,8,9,10],
-      curframe: 1,
-      scrollleft: -10
+      curframe: 1
     };
-    this.syncPosition = this.syncPosition.bind(this);
-    this.slide = this.slide.bind(this);
     this.selectFrame = this.selectFrame.bind(this);
-    this.prevFrame = this.prevFrame.bind(this);
+    this.ConditionalRender = this.ConditionalRender.bind(this);
     this.nextFrame = this.nextFrame.bind(this);
-    this.selectScrollLeft = this.selectScrollLeft.bind(this);
-  }
-
-  componentDidMount() {
-    setInterval(this.nextFrame, 4000);
-  }
-
-  syncPosition() {
-
-  }
-
-
-  selectFrame(val) {
-    if(val === 1){
-
-    }
-    this.setState({
-        curframe: val
-    });
-    var curLeft = this.state.scrollleft - 10 + (val - 1) * (frameWidth + 10);
-    if( curLeft < 0 || curLeft > 4*(frameWidth + 10)){
-     this.setState({
-      scrollleft: -10 - (val - 1) * (frameWidth + 10)
-     });
-    }
-  }
-
-  prevFrame() {
-    if(this.state.curframe === 1) {
-      this.selectFrame(this.state.thumbnails.length);
-    } else {
-      this.selectFrame(Number(this.state.curframe) - 1);
-    }
-    console.log(this.state.curframe);
   }
 
   nextFrame() {
@@ -65,53 +40,44 @@ class App extends React.Component {
     }
   }
 
-  slide(e) {
-    
+  selectFrame(val) {
     this.setState({
-      scrollleft: -10 - ( (10 + frameWidth) * (e.target.value - 1) * (this.state.thumbnails.length - 5) ) / 99 
+        curframe: Number(val)
     });
-    
   }
 
-  selectScrollLeft(val) {
-    this.setState({
-      scrollleft: val
-    });
-  }
   
+  ConditionalRender() {
+    var RenderVideo = (props) => {
+      return <embed type='video/webm' id='video' src={videoUrl[props.curFrame]} /> ;
+    };
+
+    var RenderImage = (props) => {
+      return <img id='image' src={videoUrl[props.curFrame]} />;
+    }
+    if(this.state.videos.includes(Number(this.state.curframe ))) {
+      return <RenderVideo curFrame={this.state.curframe} />;
+    } else {
+      return <RenderImage curFrame={this.state.curframe} />;
+    }
+  }
+
   render () {
+
     return (
-        <div className='background'>
-          <div className='block'>
-            <div className='row'>
-              <div className='col left'>
-
-                <div>
-                  {
-                    <embed id='video' src="https://steamcdn-a.akamaihd.net/steam/apps/256720476/movie480.webm?t=1529548698" />
-                  }
-                </div>
-
-                <div id='list'>
-                  <div id='scroll' style={{left:this.state.scrollleft+'px'}}> 
-                    {
-                      this.state.thumbnails.map( (i) => {
-                        var url = "https://s3-us-west-1.amazonaws.com/steamgallery/pubg"+i+".jpg";
-                        return <Thumbnail num={i} selectLeft={this.selectScrollLeft} left={this.state.scrollleft} selectFrame={this.selectFrame} key={i} src={url} curFrame={this.state.curframe}/>
-                      })
-                    }
-                  </div>
-                </div>
-                
-                  <span className="toggleleft" onClick={this.prevFrame}> &lt;  </span>
-                  <input type="range" min="1" max="100" className="slider" onChange={this.slide}/>
-                  <span className="toggleright" onClick={this.nextFrame}> &gt; </span>
-                
-                
-                
+      <div className='background'>
+        <div className='block'>
+          <div className='row'>
+            <div className='col left'>
+              <div>
+                {
+                  <this.ConditionalRender />
+                }
               </div>
-              <Description  />
+              <SliderBar selectFrame={this.selectFrame} curframe={this.state.curframe} thumbnails={this.state.thumbnails}/>
             </div>
+            <Description  />
+          </div>
         </div>
       </div>)
   }
