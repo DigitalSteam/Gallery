@@ -29,13 +29,16 @@ class App extends React.Component {
     };
     this.selectFrame = this.selectFrame.bind(this);
     this.ConditionalRender = this.ConditionalRender.bind(this);
+    this.nextFrame = this.nextFrame.bind(this);
   }
 
-  // componentDidMount() {
-  //   setInterval(this.nextFrame, 4000);
-  // }
-
-
+  nextFrame() {
+    if(this.state.curframe === this.state.thumbnails.length) {
+      this.selectFrame(1);
+    } else {
+      this.selectFrame(Number(this.state.curframe) + 1);
+    }
+  }
 
   selectFrame(val) {
     this.setState({

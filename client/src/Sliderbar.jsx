@@ -9,7 +9,8 @@ class SliderBar extends React.Component {
 		super(props);
 		this.state = {
 			thumbnails: this.props.thumbnails,
-			scrollleft: -10
+			scrollleft: -10,
+			curframe: this.props.curframe
 		}
 		this.selectFrame = this.selectFrame.bind(this);
     this.prevFrame = this.prevFrame.bind(this);
@@ -17,9 +18,8 @@ class SliderBar extends React.Component {
     this.selectScrollLeft = this.selectScrollLeft.bind(this);
     this.slide = this.slide.bind(this);
 	}
-	
+
 	selectFrame(val) {
-    
     var curLeft = this.state.scrollleft - 10 + (val - 1) * (frameWidth + 10);
     if( curLeft < 0 || curLeft > 4*(frameWidth + 10)){
       this.setState({
@@ -37,17 +37,17 @@ class SliderBar extends React.Component {
 
 	prevFrame() {
 		if(this.props.curframe === 1) {
-			this.props.selectFrame(this.state.thumbnails.length);
+			this.selectFrame(this.state.thumbnails.length);
 	  } else {
-			this.props.selectFrame(Number(this.props.curframe) - 1);
+			this.selectFrame(Number(this.props.curframe) - 1);
 	  }
 	}
 
 	nextFrame() {
 		if(this.props.curframe === this.state.thumbnails.length) {
-			this.props.selectFrame(1);
+			this.selectFrame(1);
 		} else {
-			this.props.selectFrame(Number(this.props.curframe) + 1);
+			this.selectFrame(Number(this.props.curframe) + 1);
 		}
   }
 
@@ -56,8 +56,6 @@ class SliderBar extends React.Component {
 			scrollleft: -10 - ( (10 + frameWidth) * (e.target.value - 1) * (this.state.thumbnails.length - 5) ) / 99 
 		});
 	}
-	
-
 	
 	render() {
 		return(
