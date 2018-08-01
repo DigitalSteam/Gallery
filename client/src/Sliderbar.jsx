@@ -71,18 +71,20 @@ class SliderBar extends React.Component {
 		return(
 			<div>
 				<div id='list'>
-	        <div id='scroll' style={{left:this.state.scrollleft+'px'}}> 
-	          {
-	            this.state.thumbnails.map( (i) => {
-	              var url = "https://s3-us-west-1.amazonaws.com/steamgallery/pubg"+i+".jpg";
-	              return <Thumbnail num={i} selectLeft={this.selectScrollLeft} left={this.state.scrollleft} selectFrame={this.selectFrame} key={i} src={url} curFrame={this.props.curframe}/>
-	            })
-	          }
-	        </div>
-	      </div>
-				<span className="toggleleft" onClick={this.prevFrame}> &lt;  </span>
-				<input type="range" min="1" max="100" className="slider" onChange={this.slide}/>
-				<span className="toggleright" onClick={this.nextFrame}> &gt; </span>
+			        <div id='scroll' style={{left:this.state.scrollleft+'px'}}> 
+			          {
+			            this.state.thumbnails.map( (i) => {
+			              var url = "https://s3-us-west-1.amazonaws.com/steamgallery/pubg"+i+".jpg";
+			              return <Thumbnail num={i} selectLeft={this.selectScrollLeft} left={this.state.scrollleft} selectFrame={this.selectFrame} key={i} src={url} curFrame={this.props.curframe}/>
+			            })
+			          }
+			        </div>
+	      		</div>
+		      	<div className='container'>
+					<button className='toggleleft' onClick={this.prevFrame}> &lt;  </button>
+					<input type="range" min="1" max="100" className="slider" onChange={this.slide}/> 
+					<button className='toggleright' onClick={this.nextFrame}> &gt; </button> 
+				</div>
 			</div>
 		)
 	}
