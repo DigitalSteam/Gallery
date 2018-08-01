@@ -18,7 +18,7 @@ const videoUrl = {
   10: 'https://s3-us-west-1.amazonaws.com/steamgallery/pubg_big_10.jpg',
 }
 
-class App extends React.Component {
+class Gallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
@@ -83,4 +83,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<Gallery />, document.getElementById('Gallery'));

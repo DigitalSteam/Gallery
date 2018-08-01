@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Game = require('mongoose.js');
+const Game = require('./mongoose.js');
 
 const addGame = (gameJSON, callback) => {
 	const game = new Game( gameJSON );

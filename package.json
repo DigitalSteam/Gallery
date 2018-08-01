@@ -1,5 +1,8 @@
 {
   "name": "Gallery",
+  "jest": {
+    "setupTestFrameworkScriptFile": "Steam-Gallery/setupTests.ts"
+  },
   "version": "",
   "description": "",
   "author": "",
@@ -9,14 +12,15 @@
   },
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "test": "jest",
+    "test": "jest --coverage",
     "lint": "./node_modules/.bin/eslint ./gallery"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "jest-puppeteer-preset": "^3.2.1",
-    "mongoose": "^5.2.4"
+    "mongoose": "^5.2.4",
+    "sinon": "^6.1.4"
   },
   "repository": "https://github.com/DigitalSteam",
   "devDependencies": {
@@ -24,6 +28,8 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
