@@ -8,15 +8,25 @@ class SliderBar extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			thumbnails: this.props.thumbnails,
+			thumbnails: [],
 			scrollleft: -10,
-			curframe: this.props.curframe
+			curframe: 1
 		}
 		this.selectFrame = this.selectFrame.bind(this);
-    this.prevFrame = this.prevFrame.bind(this);
-    this.nextFrame = this.nextFrame.bind(this);
-    this.selectScrollLeft = this.selectScrollLeft.bind(this);
-    this.slide = this.slide.bind(this);
+	  this.prevFrame = this.prevFrame.bind(this);
+	  this.nextFrame = this.nextFrame.bind(this);
+	  this.selectScrollLeft = this.selectScrollLeft.bind(this);
+	  this.slide = this.slide.bind(this);
+	}
+
+	componentDidMount() {
+		if(this.props.thumbnails !== undefined && this.props.curframe !== undefined) {
+			this.setState({
+				thumbnails: this.props.thumbnails,
+				curframe: this.props.curframe
+			});
+		}
+		
 	}
 
 	selectFrame(val) {
@@ -27,7 +37,7 @@ class SliderBar extends React.Component {
       });
     }
     this.props.selectFrame(Number(val));
-  }
+ }
 
 	selectScrollLeft(val) {
     this.setState({
