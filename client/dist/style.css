@@ -152,7 +152,7 @@ p{
     float: left;
     width: 90%; /* Full-width */
     height: 20px; /* Specified height */
-    margin-left: 13px;
+    margin-left: 10px;
     background: #000000;
     outline: none; /* Remove outline */
     opacity: 0.3; /* Set transparency (for mouse-over effects on hover) */
