@@ -152,7 +152,7 @@ p{
     float: left;
     width: 90%; /* Full-width */
     height: 20px; /* Specified height */
-    padding-left: 13px;
+    margin-left: 13px;
     background: #000000;
     outline: none; /* Remove outline */
     opacity: 0.3; /* Set transparency (for mouse-over effects on hover) */
@@ -163,6 +163,7 @@ p{
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none; /* Override default look */
     appearance: none;
+
     width: 50px; /* Set a specific slider handle width */
     height: 20px; /* Slider handle height */
     background: #1c2938; /* Green background */
@@ -176,6 +177,7 @@ p{
 }
 
 .slider::-moz-range-thumb {
+
     width: 50px; /* Set a specific slider handle width */
     height: 20px; /* Slider handle height */
     background: #4CAF50; /* Green background */
