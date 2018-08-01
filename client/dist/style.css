@@ -152,7 +152,7 @@ p{
     float: left;
     width: 90%; /* Full-width */
     height: 20px; /* Specified height */
-    margin-left: 10px;
+    margin-left: 9px;
     background: #000000;
     outline: none; /* Remove outline */
     opacity: 0.3; /* Set transparency (for mouse-over effects on hover) */
@@ -191,6 +191,7 @@ p{
 	background: none;
 	border: none;
 	color: white;
+	font-size: 15px;
 }
 .toggleright{
 	/*width: 5%;*/
@@ -199,6 +200,7 @@ p{
 	background: none;
 	border: none;
 	color:white;
+	font-size: 15px;
 }
 button:focus {outline:0;}
 .container{
