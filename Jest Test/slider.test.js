@@ -26,6 +26,8 @@ describe('slider bar functionality', () => {
 		wrapper.find('.toggleright').simulate('click');
     	expect(SliderBar.prototype.nextFrame).toBeCalled();
 	});
+
+	
 });
 
 
