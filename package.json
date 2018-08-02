@@ -13,7 +13,8 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "test": "jest --coverage",
-    "lint": "./node_modules/.bin/eslint ./gallery"
+    "lint": "./node_modules/.bin/eslint ./gallery",
+    "start": "node server/server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
