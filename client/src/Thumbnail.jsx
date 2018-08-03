@@ -30,6 +30,15 @@ class Thumbnail extends React.Component {
 	select(e) {
 		var len = e.target.src.length;
 	    this.props.selectFrame.call(null, e.target.src.replace(/.*?(\d+)[^\d]*$/,'$1'));
+	    fetch('http://localhost:3003/', {
+		  method: 'POST',
+		  body: JSON.stringify({
+		    firstParam: 'yourValue',
+		    secondParam: 'yourOtherValue',
+		  })
+		}).then((res) => {
+			console.log(res);
+		})
 	}
 
 	

@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+
+
+  gallery:
+    build: .
+    ports: 
+      - '3003:3003'
+    depends_on:
+      - database
+
+  database:
+    image: mongo:latest
+    volumes:
+      - ./data:/data/db
+    ports:
+      - 27017:27017
