@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:boron
 
 # Create app directory
 WORKDIR /Steam-Gallery
@@ -7,13 +7,12 @@ WORKDIR /Steam-Gallery
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
-
+COPY package-lock.json ./
 RUN npm install
 # If you are building your code for production
 # RUN npm install --only=production
-
 # Bundle app source
 COPY . .
 
 EXPOSE 8080
-CMD [ "npm", "start" ]
+CMD [ "npm", "start"]

@@ -14,8 +14,23 @@ app.use(bodyParser.urlencoded({
 }));
 
 // app.use(express.static(__dirname, server.js));
-app.get('/', (req, res) => {
-
+app.post('/', (req, res) => {
+	console.log('POST ' + req.url );
+	const gameJson = {
+		'name': "docker",
+		'description': "Docker is killing me",
+		'videos': ['video1', 'video2'],
+		'images': ['image1', 'image2'],
+		'cover_image': 'head_image',
+		'review': "positive",
+		'company': "Dota Inc",
+		'issue_date': "1995-12-01",
+		'tags': ["shoot", "npc"]
+	};
+	const callback = (obj) => {
+		res.send("success");
+	}
+	db.addGame(gameJson,callback);
 });
 
 

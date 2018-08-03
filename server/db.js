@@ -3,6 +3,7 @@ const Game = require('./mongoose.js');
 
 const addGame = (gameJSON, callback) => {
 	const game = new Game( gameJSON );
+	console.log(gameJSON);
 	game.save( (err, game) => {
 		if(err) throw err;
 		else console.log('game added');
